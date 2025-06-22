@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Productivity Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <div class="header-top">
+        <h1>🚀 Productivity Dashboard</h1>
+        <div class="header-controls">
+          <button id="ai-suggest" title="AI Task Suggestions">🤖</button>
+          <button id="notifications-toggle" title="Toggle Notifications">🔔</button>
+          <button id="theme-toggle" title="Toggle Theme">🌙</button>
+          <button id="export-data" title="Export Data">📤</button>
+          <input type="file" id="import-data" accept=".json" style="display:none">
+          <button id="import-btn" title="Import Data">📥</button>
+        </div>
+      </div>
+      <div id="quote-box">
+        <span id="quote"></span>
+        <span id="author"></span>
+      </div>
+    </header>
+    <main>
+      <section class="todo-section">
+        <div class="section-header">
+          <h2>📝 To-Do List</h2>
+          <div class="task-stats">
+            <span id="task-count">0/0</span>
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+          </div>
+        </div>
+        <form id="todo-form">
+          <input type="text" id="todo-input" placeholder="Add a new task..." autocomplete="off" required/>
+          <select id="task-category">
+            <option value="work">💼 Work</option>
+            <option value="personal">🏠 Personal</option>
+            <option value="health">💪 Health</option>
+            <option value="learning">📚 Learning</option>
+          </select>
+          <select id="task-priority">
+            <option value="low">🟢 Low</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+          <button type="submit">Add</button>
+        </form>
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="work">Work</button>
+          <button class="filter-btn" data-filter="personal">Personal</button>
+          <button class="filter-btn" data-filter="health">Health</button>
+          <button class="filter-btn" data-filter="learning">Learning</button>
+        </div>
+        <ul id="todo-list"></ul>
+      </section>
+      <section class="pomodoro-section">
+        <h2>⏲️ Pomodoro Timer</h2>
+        <div class="pomo-mode" id="pomo-mode">Work Session</div>
+        <div id="pomodoro-timer">
+          <span id="pomo-minutes">25</span>:<span id="pomo-seconds">00</span>
+        </div>
+        <div class="pomo-progress">
+          <div class="pomo-circles">
+            <span class="pomo-circle"></span>
+            <span class="pomo-circle"></span>
+            <span class="pomo-circle"></span>
+            <span class="pomo-circle"></span>
+          </div>
+          <div class="pomo-stats">
+            <span>Sessions: <span id="pomo-count">0</span></span>
+          </div>
+        </div>
+        <div class="pomo-controls">
+          <button id="start-pomo">Start</button>
+          <button id="pause-pomo">Pause</button>
+          <button id="reset-pomo">Reset</button>
+        </div>
+      </section>
+      <section class="calendar-section">
+        <h2>📅 Calendar</h2>
+        <div id="calendar"></div>
+      </section>
+      <section class="analytics-section">
+        <h2>📊 Analytics</h2>
+        <div class="chart-container">
+          <canvas id="productivity-chart" width="300" height="150"></canvas>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" id="total-tasks">0</div>
+            <div class="stat-label">Total Tasks</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="completed-today">0</div>
+            <div class="stat-label">Completed Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="streak-days">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="focus-time">0h</div>
+            <div class="stat-label">Focus Time</div>
+          </div>
+        </div>
+      </section>
+      <section class="habits-section">
+        <h2>🎯 Habit Tracker</h2>
+        <div class="habit-form">
+          <input type="text" id="habit-input" placeholder="Add a habit...">
+          <button id="add-habit">Add</button>
+        </div>
+        <div id="habits-list"></div>
+      </section>
+      <section class="focus-section">
+        <h2>🧘 Focus Mode</h2>
+        <div class="focus-controls">
+          <button id="focus-toggle">Start Focus</button>
+          <div class="focus-timer" id="focus-timer">00:00</div>
+        </div>
+        <div class="focus-stats">
+          <div>Sessions: <span id="focus-sessions">0</span></div>
+          <div>Total: <span id="total-focus-time">0h 0m</span></div>
+        </div>
+      </section>
+      <section class="weather-section">
+        <h2>🌤️ Weather</h2>
+        <div id="weather-widget">
+          <div class="weather-location">📍 Location</div>
+          <div class="weather-temp">--°</div>
+          <div class="weather-desc">Loading...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
